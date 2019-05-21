@@ -25,8 +25,8 @@ const Countries=db.define('countries', {
       }
 })
 
-// Countries.getTopFive=function(){
-//     return Countries.findAll({order: [['name', 'DESC']], limit: 5})
-// }
+Countries.getTopFive=function(){
+    return Countries.findAll({order: [['GFI', 'ASC']], limit: 5})
+}
 
 module.exports = Countries;
