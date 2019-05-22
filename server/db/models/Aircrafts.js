@@ -44,12 +44,12 @@ const Aircrafts=db.define('aircrafts',{
     }
 })
 
-// Aircrafts.getAircraftByType=function(AircraftType){
-//     return Aircrafts.findOne({
-//         where:{
-//             type: AircraftType
-//      }})
-// }
+Aircrafts.getAircraftByType = function(AircraftType){
+    return Aircrafts.findOne({
+        where:{
+            type: AircraftType
+     }})
+}
 
 // Aircrafts.getMillion=function(){
 //     return `${Aircrafts.cost*1000000}`
