@@ -16,14 +16,12 @@ router.get('/', async (req, res, next) =>{
 
 router.get('/:id', async (req, res, next) =>{
     const id = req.params.id;
-
     try{
       const all_aircrafts = await Aircrafts.findById(id, {
           include: [
               {model: Countries, required: false}
           ]
       });
-      
       res.json(all_aircrafts)
     }catch(err)
     {next(err)}

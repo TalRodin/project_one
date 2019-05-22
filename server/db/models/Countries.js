@@ -1,22 +1,22 @@
 const Sequelize = require('sequelize');
 const db = require('../_db');
 
-const Countries=db.define('countries', {
-      name:{
+const Countries = db.define('countries', {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             notEmpty: true
           }
       },
-      GFI:{
-         type: Sequelize.DECIMAL,
-         validate:{
+      GFI: {
+         type: Sequelize.FLOAT,
+         validate: {
              min: 0.0,
              max: 10.0
          }
       },
-      flagUrl:{
+      flagUrl: {
         type: Sequelize.TEXT,
         defaultValue: '',
         validate: {
@@ -25,7 +25,7 @@ const Countries=db.define('countries', {
       }
 })
 
-Countries.getTopFive=function(){
+Countries.getTopFive = function(){
     return Countries.findAll({order: [['GFI', 'ASC']], limit: 5})
 }
 
