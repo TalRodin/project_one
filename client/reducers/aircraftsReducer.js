@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 const GOT_ALL_AIRCRAFTS='GOT_ALL_AIRCRAFTS'
 const ADD_AIRCRAFT='ADD_AIRCRAFT'
@@ -23,7 +23,7 @@ export const addAircraftThunk=(aircraft)=> async(dispatch)=>{
     dispatch(addAircraft(data))
 }
 
-export const countryReducer = (state=[], action)=>{
+export const aircraftsReducer = (state=[], action)=>{
     switch(action.type){
         case GOT_ALL_AIRCRAFTS:
             return action.aircrafts

@@ -6,7 +6,7 @@ import {
   Switch
 } from 'react-router-dom';
 import AllCountries from './countries';
-
+import AllAircrafts from './aircrafts';
 import Navbar from './Navbar';
 import AppBar from '@material-ui/core/AppBar';
 
@@ -29,10 +29,9 @@ const Root = () => {
          <h1 >AIRCRAFT</h1>
       </main>
       <Switch>
-        {/* <Route exact path="/countries" component={AllCountries} /> */}
-        {/* <Route exact path="/aircrafts" component={AllAircrafts} />  */}
-       
-
+        <Route exact path="/countries" component={AllCountries} />
+        <Route exact path="/aircrafts" component={AllAircrafts} /> 
+      
         {/* <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
         <Route  path="/countries/:id(\d+)" component={SingleCountry} /> */}
 

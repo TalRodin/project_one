@@ -1,6 +1,6 @@
 /* combineReducers is not currently used, but eventually should be for modular code :D */
-import { combineReducers } from 'redux'
-import  { countriesReducer } from './countriesReducer'
+import {combineReducers} from 'redux'
+import {countriesReducer} from './countriesReducer'
 import {countryReducer} from  './countryReducer'
 import {aircraftReducer} from './aircraftReducer'
 import {aircraftsReducer} from './aircraftsReducer'
