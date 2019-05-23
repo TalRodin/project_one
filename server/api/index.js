@@ -14,15 +14,6 @@ router.use((req, res, next) => {
 })
 module.exports = router
 
-
-
-
-
-
-
-
-
-
 // You can put all routes in this file; HOWEVER, this file should almost be like a table of contents for the routers you create
 // If you aren't getting to this object, but rather the index.html (something with a joke) your path is wrong.
 // I know this because we automatically send index.html for all requests that don't make sense in our backend.

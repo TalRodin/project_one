@@ -10,11 +10,11 @@ const Countries = db.define('countries', {
           }
       },
       GFI: {
-         type: Sequelize.FLOAT,
-         validate: {
-             min: 0.0,
-             max: 10.0
-         }
+        type: Sequelize.DECIMAL,
+        validate: {
+            min: 0.0,
+            max: 10.0
+        }
       },
       flagUrl: {
         type: Sequelize.TEXT,

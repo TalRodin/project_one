@@ -5,13 +5,13 @@ const router = require('express').Router()
 const {Aircrafts, Countries} = require('../db/models/index')
 //-------Routers----------
 
-// router.get('/', async (req, res, next) =>{
-//   try{
-//     const all_countries = await Countries.findAll();
-//     res.json(all_countries)
-//   }catch(err)
-//   {next(err)}
-// });
+router.get('/', async (req, res, next) =>{
+  try{
+    const all_countries = await Countries.findAll();
+    res.json(all_countries)
+  }catch(err)
+  {next(err)}
+});
 
 router.get('/:id', async (req, res, next) => {
     const id = req.params.id;

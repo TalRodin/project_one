@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 
 const GOT_ALL_AIRCRAFTS='GOT_ALL_AIRCRAFTS'
 const ADD_AIRCRAFT='ADD_AIRCRAFT'
@@ -13,7 +13,7 @@ const addAircraft = (aircraft)=>({
     aircraft
 })
 
-export const gotAllAircraftsThunk=()=>async (dispatch)=>{
+export const getAllAircraftsThunk=()=>async (dispatch)=>{
     const {data} =await axios.get('/api/aircrafts')
     dispatch(gotAllAircrafts(data))
 }

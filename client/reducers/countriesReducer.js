@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 
 const GOT_ALL_COUNTRIES='GOT_ALL_COUNTRIES'
 const ADD_COUNTRY='ADD_COUNTRY'
@@ -13,7 +13,7 @@ const addCountry = (country)=>({
     country
 })
 
-export const gotAllCountriesThunk=()=>async (dispatch)=>{
+export const getAllCountriesThunk=()=>async (dispatch)=>{
     const {data} =await axios.get('/api/countries')
     dispatch(gotAllCountries(data))
 }

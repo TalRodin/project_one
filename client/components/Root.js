@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   BrowserRouter as Router,
   Link,
@@ -7,6 +7,10 @@ import {
 } from 'react-router-dom';
 import AllCountries from './countries';
 import AllAircrafts from './aircrafts';
+import SingleAircraft from './singleaircraft'
+import SingleCountry from './singlecountry'
+import AddCountry from './formcountries'
+import AddAircraft from './formaircrafts'
 import Navbar from './Navbar';
 import AppBar from '@material-ui/core/AppBar';
 
@@ -28,16 +32,15 @@ const Root = () => {
       <main>
          <h1 >AIRCRAFT</h1>
       </main>
+
       <Switch>
+        {/* <Route exact path="/" component={Home}/> */}
         <Route exact path="/countries" component={AllCountries} />
         <Route exact path="/aircrafts" component={AllAircrafts} /> 
-      
-        {/* <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
-        <Route  path="/countries/:id(\d+)" component={SingleCountry} /> */}
-
-         {/*
-         <Route  path="/students" component={AddStudent} />
-         <Route  path="/campuses" component={AddCampus} /> */}
+        <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
+        <Route  path="/countries/:id(\d+)" component={SingleCountry} />
+        <Route  path="/countries" component={AddCountry} />
+        <Route  path="/aircrafts" component={AddAircraft} />
          {/* <Route  path="/updatecampus" component={UpdateCampus} />
          <Route  path="/updatestudent" component={UpdateStudent} /> */}
       </Switch>
@@ -46,4 +49,4 @@ const Root = () => {
   )
 }
 
-export default Root
+export default Root;
