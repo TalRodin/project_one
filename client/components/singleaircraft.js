@@ -4,10 +4,12 @@ import {getSingleAircraftThunk} from '../reducers/aircraftReducer'
 import { Link, Switch, Route } from 'react-router-dom'
 
 class SingleAircraft extends React.Component{
+   
     componentDidMount(){
           this.props.getSingleAircraft(this.props.match.params.id) 
     }                  
     render() {
+        let obj=this.props.aircraft
         return (
             <div>
             <div>
@@ -19,8 +21,8 @@ class SingleAircraft extends React.Component{
             <div>
                 <Link to={`/countries`}>Countries</Link>
             </div>
-    
-            </div>
+             {(obj.country!==undefined) ? <Link key={obj.country.id} to={`/countries/${obj.country.id}`}>{obj.country.name}</Link> : false}
+            </div> 
         )
     }
 }

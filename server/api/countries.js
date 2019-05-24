@@ -13,6 +13,14 @@ router.get('/', async (req, res, next) =>{
   {next(err)}
 });
 
+router.get('/top5/', async(req,res,next)=>{
+  try{
+      const top_countries = await Countries.getTopFive()
+      res.json(top_countries)
+    }catch(err)
+    {next(err)}
+})
+
 router.get('/:id', async (req, res, next) => {
     const id = req.params.id;
     try {
@@ -27,15 +35,6 @@ router.get('/:id', async (req, res, next) => {
     } catch (err)
     {next(err)}
 });
-
-
-router.get('/', async(req,res,next)=>{
-    try{
-        const top_countries = await Countries.getTopFive()
-        res.json(top_countries)
-      }catch(err)
-      {next(err)}
-})
 
 router.post('/', async(req,res,next)=>{
     try{

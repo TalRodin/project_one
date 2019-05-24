@@ -6,8 +6,11 @@ import { Link, Switch, Route } from 'react-router-dom'
 class SingleCountry extends React.Component{
     componentDidMount(){
           this.props.getSingleCountry(this.props.match.params.id) 
-    }                  
+    }            
+      
     render() {
+        let obj=this.props.country
+    
         return (
             <div>
             <div>
@@ -19,7 +22,7 @@ class SingleCountry extends React.Component{
             <div>
                 <Link to={`/aircrafts`}>Aircrafts</Link>
             </div>
-    
+            {(obj.aircrafts!==undefined) ? obj.aircrafts.map(aircraft=>(<Link key={aircraft.id} to={`/aircrafts/${aircraft.id}`}>{aircraft.make}</Link>)) : false}
             </div>
         )
     }
