@@ -15,9 +15,9 @@ const deleteCountry = (countryId)=>({
    countryId
 })
 
-const updateCountry = (country)=>({
+const updateCountry = (updatedcountry)=>({
    type: UPDATE_COUNTRY,
-   country
+   updatedcountry
 })
 
 export const getSingleCountryThunk=(id)=> async (dispatch)=>{
@@ -39,6 +39,8 @@ export const countryReducer = (state = [], action) => {
           switch(action.type){
             case GOT_SINGLE_COUNTRY:
                 return action.country
+            case UPDATE_COUNTRY:
+                return action.country  
             default: 
                 return state
          }

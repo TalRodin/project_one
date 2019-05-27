@@ -11,9 +11,10 @@ import SingleAircraft from './singleaircraft'
 import SingleCountry from './singlecountry'
 import AddCountry from './formcountries'
 import AddAircraft from './formaircrafts'
-import TopFive from './countries'
+import TopFive from './topfive'
 import Navbar from './Navbar';
 import AppBar from '@material-ui/core/AppBar';
+// import Home from './home'
 
 
 const Root = () => {
@@ -25,24 +26,24 @@ const Root = () => {
   return (
     <Router>
     <div>
-
       <AppBar position = 'static' style = {style}>
         <Navbar />
       </AppBar>
 
       <main>
-         <h1 >AIRCRAFT</h1>
-         
+         <h1>AIRCRAFT</h1>
       </main>
        
       <Switch>
+        <Route exact path="/countries/top5" component={TopFive} />
         <Route exact path="/countries" component={AllCountries} />
         <Route exact path="/aircrafts" component={AllAircrafts} /> 
         <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
         <Route  path="/countries/:id(\d+)" component={SingleCountry} />
         <Route  path="/countries" component={AddCountry} />
         <Route  path="/aircrafts" component={AddAircraft} />
-        <Route  path="/countries/top5/" component={TopFive} />
+        
+        {/* <Route exact path='/' component={Home}/> */}
       </Switch>
     </div>
     </Router>

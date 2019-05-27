@@ -39,9 +39,10 @@ class AllAircrafts extends React.Component{
     render(){
         return(
             <div>
-                <h1>Aircrafts</h1>
+                <h3>Aircrafts</h3>
+                <hr />
                 {this.props.aircrafts.map(aircraft=>(
-                    <div>
+                    <div key={aircraft.id}>
                         <img src={aircraft.imageUrl} height={100}/>
                         <Link key={aircraft.id} to={`/aircrafts/${aircraft.id}`}>{aircraft.make}</Link>
                         <button onClick={()=>this.deleteAircraft(aircraft.id)}>Delete</button>

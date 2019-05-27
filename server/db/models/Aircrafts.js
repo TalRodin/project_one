@@ -51,10 +51,5 @@ Aircrafts.getAircraftByType = function(AircraftType){
      }})
 }
 
-// Aircrafts.getMillion=function(){
-//     return `${Aircrafts.cost*1000000}`
-// }
-
-
 // -----Table Aircrafts-----
 module.exports = Aircrafts;
