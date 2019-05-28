@@ -15,33 +15,41 @@ const deleteCountry = (countryId)=>({
    countryId
 })
 
-const updateCountry = (updatedcountry)=>({
+const updateCountry = (country)=>({
    type: UPDATE_COUNTRY,
-   updatedcountry
+   country
+   
 })
-
+// export const updatedCampus = (id, name, address) => ({ type: UPDATED_CAMPUS, id, name, address });
 export const getSingleCountryThunk=(id)=> async (dispatch)=>{
+    console.log('lolololo/.........', id)
     const {data} = await axios.get(`/api/countries/${id}`)
+    
     dispatch(gotSingleCountry(data))
  }
 
 export const deleteCountryThunk=(id)=> async (dispatch)=>{
+   console.log('delete/.........', id)
    await axios.delete(`/api/countries/${id}`)
    dispatch(deleteCountry(data))
 }
 
-export const updateCountryThunk=(id)=>async (dispatch)=>{
-   const {data}=await axios.get(`/api/countries/${id}`)
+
+export const updateCountryThunk=(country, id)=>async (dispatch)=>{ 
+   console.log('...........id',country)
+   const {data}=await axios.put(`/api/countries/${id}`, country)
    dispatch(updateCountry(data))
 }
 
 export const countryReducer = (state = [], action) => {
+
           switch(action.type){
             case GOT_SINGLE_COUNTRY:
                 return action.country
             case UPDATE_COUNTRY:
-                return action.country  
+                return action.country
             default: 
                 return state
          }
      }
+

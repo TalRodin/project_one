@@ -47,12 +47,14 @@ class AllCountries extends React.Component{
                         <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
                         <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
                         
+                    
                     </div>
                 ))}
             <div>
             <button onClick={this.toggle}>Add New Country</button>
             {
                 this.state.showAddNewCountry ?  <NewCountryForm addCountry={this.addCountry}/> : null
+                
             }
            </div>  
              

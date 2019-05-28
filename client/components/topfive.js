@@ -3,11 +3,6 @@ import {connect} from 'react-redux';
 import { Link, Switch,Route } from 'react-router-dom'
 import {getTopFiveThunk} from '../reducers/countriesReducer'
 
-
-
-   
-
-
 class TopFive extends React.Component{
     constructor(){
         super()

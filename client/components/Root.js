@@ -14,6 +14,7 @@ import AddAircraft from './formaircrafts'
 import TopFive from './topfive'
 import Navbar from './Navbar';
 import AppBar from '@material-ui/core/AppBar';
+import UpdateCountry from './updatecountry'
 // import Home from './home'
 
 
@@ -40,6 +41,7 @@ const Root = () => {
         <Route exact path="/aircrafts" component={AllAircrafts} /> 
         <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
         <Route  path="/countries/:id(\d+)" component={SingleCountry} />
+        <Route  path="/countries/:id(\d+)" component={UpdateCountry} />
         <Route  path="/countries" component={AddCountry} />
         <Route  path="/aircrafts" component={AddAircraft} />
         
