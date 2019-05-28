@@ -20,10 +20,10 @@ class UpdateCountry extends React.Component{
     }
 
     handleSubmit(event){
+        console.log('`````````````',this.props.SingleCountry)
        event.preventDefault() 
 
           let updatedCountry={
-              id: this.props.id,
               name:this.state.name,
               GFI:this.state.GFI,
               flagUrl:this.state.flagUrl

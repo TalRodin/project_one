@@ -41,7 +41,7 @@ const Root = () => {
         <Route exact path="/aircrafts" component={AllAircrafts} /> 
         <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
         <Route  path="/countries/:id(\d+)" component={SingleCountry} />
-        <Route  path="/countries/:id(\d+)" component={UpdateCountry} />
+        {/* <Route  path="/countries/" component={UpdateCountry} /> */}
         <Route  path="/countries" component={AddCountry} />
         <Route  path="/aircrafts" component={AddAircraft} />
         

@@ -20,7 +20,7 @@ const updateCountry = (country)=>({
    country
    
 })
-// export const updatedCampus = (id, name, address) => ({ type: UPDATED_CAMPUS, id, name, address });
+
 export const getSingleCountryThunk=(id)=> async (dispatch)=>{
     console.log('lolololo/.........', id)
     const {data} = await axios.get(`/api/countries/${id}`)
@@ -38,7 +38,8 @@ export const deleteCountryThunk=(id)=> async (dispatch)=>{
 export const updateCountryThunk=(country, id)=>async (dispatch)=>{ 
    console.log('...........id',country)
    const {data}=await axios.put(`/api/countries/${id}`, country)
-   dispatch(updateCountry(data))
+   console.log('eeeeeeeeeee',data.countries)
+   dispatch(updateCountry(data.countries))
 }
 
 export const countryReducer = (state = [], action) => {
