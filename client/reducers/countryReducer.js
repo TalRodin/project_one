@@ -33,7 +33,7 @@ export const deleteCountryThunk=(id)=> async (dispatch)=>{
    await axios.delete(`/api/countries/${id}`)
    dispatch(deleteCountry(data))
 }
-
+// return state.filter(campus => campus.id !== action.id);
 
 export const updateCountryThunk=(country, id)=>async (dispatch)=>{ 
    console.log('...........id',country)

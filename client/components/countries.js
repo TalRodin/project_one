@@ -5,7 +5,7 @@ import {getAllCountriesThunk} from '../reducers/countriesReducer'
 import  {deleteCountryThunk}  from '../reducers/countryReducer'
 import {addCountryThunk} from '../reducers/countriesReducer'
 import NewCountryForm from './formcountries'
-
+// import {getCampusesThunk, deleteCampusThunk} from '../reducers';
 
 class AllCountries extends React.Component{
     constructor(){
@@ -46,7 +46,7 @@ class AllCountries extends React.Component{
                         <img src={country.flagUrl} height={100}/>
                         <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
                         <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
-                        
+                        {/* <i className='fas fa-trash' onClick={() => this.props.deleteCampus(campus.id)} /> */}
                     
                     </div>
                 ))}
@@ -70,6 +70,7 @@ const mapStateToProps=(state)=>({
 const mapDispatchToProps=(dispatch)=>({
     getAllCountries: ()=>dispatch(getAllCountriesThunk()),
     deleteCountry: (id)=>dispatch(deleteCountryThunk(id)),
+    // deleteCampus: id => dispatch(deleteCampusThunk(id)),
     addCountry:(newCountry)=>dispatch(addCountryThunk(newCountry))
 })
 

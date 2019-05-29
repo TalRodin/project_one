@@ -15,7 +15,7 @@ class UpdateAircraft extends React.Component{
        constructor() {
         super();
         this.state = updateState;
-        
+        this.handleSubmit=this.handleSubmit.bind(this)
         this.handleMake = this.handleMake.bind(this);
         this.handleModel=this.handleModel.bind(this)
         this.handleYear=this.handleYear.bind(this)
