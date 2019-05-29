@@ -47,6 +47,7 @@ export const countryReducer = (state = [], action) => {
           switch(action.type){
             case GOT_SINGLE_COUNTRY:
                 return action.country
+
             case UPDATE_COUNTRY:
                 return action.country
             default: 

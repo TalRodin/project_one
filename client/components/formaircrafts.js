@@ -1,5 +1,8 @@
 import React, {Component} from 'react' //to use jsx
 import ReactDOM from 'react-dom'
+import { connect } from 'react-redux';
+import {addAircraftThunk} from '../reducers/aircraftsReducer'
+import {getAllCountriesThunk} from '../reducers/countriesReducer'
 
 class NewAircraftForm extends Component{
     constructor(){
@@ -11,31 +14,39 @@ class NewAircraftForm extends Component{
            type:'',
            cost:0,
            imageUrl:'',
-           description:''
+           description:'',
+           countryId:''
 
         }
          this.handleSubmit=this.handleSubmit.bind(this)
          this.handleChange=this.handleChange.bind(this)
      }
+     componentDidMount(){
+        this.props.getAllCountries();
+    }
     async handleSubmit(event){
        event.preventDefault() 
        this.props.addAircraft(this.state)
-       this.setState={
+     this.setState={
         make:'',
         model:'',
         year:'',
         type:'',
         cost:0,
         imageUrl:'',
-        description:''
-       }
+        description:'',
+        countryId:''}
+       
+       console.log('we are here', event.target)
     }
+
     handleChange(event){
          this.setState({
-           [event.target.name]:event.target.value
+           [event.target.name]: event.target.value
         })
     }
     render(){
+        console.log('we are here---------->', event.target)
         return(
             <div id='container'>
 
@@ -69,6 +80,18 @@ class NewAircraftForm extends Component{
                         <input type='text' name='description'  value = {this.state.description} onChange={this.handleChange}/>
                     </label>
 
+                    <label htmlFor='countryId'>Country:</label>
+                    <select name='countryId'  value={this.state.countryId} onChange={this.handleChange}>   
+                    
+               
+                        {
+                            this.props.countries.map(country=>(
+                                <option key={country.id} value={country.id}>{country.name}</option>
+                            ))
+                        }
+                    </select>
+                    
+
                    <button type='submit'>Submit</button>
 
                  </form>
@@ -77,5 +100,11 @@ class NewAircraftForm extends Component{
        )
    }
 }
-
-export default NewAircraftForm   
+const mapStateToProps=(state)=>({
+    countries: state.countriesReducer
+})
+const mapDispatchToProps=(dispatch)=>({
+    getAllCountries: ()=>dispatch(getAllCountriesThunk()),
+    addAircraft:(newAircraft)=>dispatch(addAircraftThunk(newAircraft))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(NewAircraftForm);
