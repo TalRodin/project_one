@@ -1,6 +1,6 @@
 import React, {Component} from 'react' //to use jsx
 import ReactDOM from 'react-dom'
-import SingleCountry from './singlecountry'
+
 
 const updateState={
             name:'',
@@ -20,7 +20,7 @@ class UpdateCountry extends React.Component{
     }
 
     handleSubmit(event){
-        console.log('`````````````',this.props.SingleCountry)
+        console.log('`````````````',this.props)
        event.preventDefault() 
 
           let updatedCountry={

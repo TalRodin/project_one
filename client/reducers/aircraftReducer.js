@@ -30,14 +30,24 @@ export const deleteAircraftThunk=(id)=> async (dispatch)=>{
    dispatch(deleteAircraft(data))
 }
 
-export const updateAircraftThunk=(id)=>async (dispatch)=>{
-   const {data}=await axios.get(`/api/aircrafts/${id}`)
-   dispatch(updateAircraft(data))
+export const updateAircraftThunk=(aircraft, id)=>async (dispatch)=>{
+   console.log('>>>>>>>>here with aircraft',aircraft)
+   const {data}=await axios.put(`/api/aircrafts/${id}`, aircraft)
+   console.log('>>>>>>>>here with aircraft data',data)
+   dispatch(updateAircraft(data.aircrafts))
+
 }
+
+
+
+
+
 
 export const aircraftReducer = (state = [], action) => {
           switch(action.type){
             case GOT_SINGLE_AIRCRAFT:
+                return action.aircraft
+            case UPDATE_AIRCRAFT:
                 return action.aircraft
             default: 
                 return state
