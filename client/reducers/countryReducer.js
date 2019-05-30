@@ -31,9 +31,9 @@ export const getSingleCountryThunk=(id)=> async (dispatch)=>{
 export const deleteCountryThunk=(id)=> async (dispatch)=>{
    console.log('delete/.........', id)
    await axios.delete(`/api/countries/${id}`)
-   dispatch(deleteCountry(data))
+   dispatch(deleteCountry(id))
 }
-// return state.filter(campus => campus.id !== action.id);
+
 
 export const updateCountryThunk=(country, id)=>async (dispatch)=>{ 
    console.log('...........id',country)
@@ -47,7 +47,6 @@ export const countryReducer = (state = [], action) => {
           switch(action.type){
             case GOT_SINGLE_COUNTRY:
                 return action.country
-
             case UPDATE_COUNTRY:
                 return action.country
             default: 

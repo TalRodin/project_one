@@ -4,6 +4,8 @@ import {getSingleCountryThunk} from '../reducers/countryReducer'
 import { Link, Switch, Route } from 'react-router-dom'
 import {updateCountryThunk} from '../reducers/countryReducer'
 import UpdateCountry from './updatecountry'
+import {addAircraftThunk} from '../reducers/aircraftsReducer'
+
 
 class SingleCountry extends Component{
     constructor(){
@@ -14,6 +16,7 @@ class SingleCountry extends Component{
        
         this.toggle=this.toggle.bind(this)
         this.updateCountry=this.updateCountry.bind(this)
+        // this.addAircraftToSingleCountry=this.addAircraftToSingleCountry.bind(this)
     }
 
     componentDidMount(){
@@ -23,10 +26,14 @@ class SingleCountry extends Component{
         this.props.updateCountry(updatedCountry, this.props.match.params.id)
         
     }
+    addAircraftToSingleCountry(NewAircraftToSingleCountry){
+        this.props.addAircraftToSingleCountry(NewAircraftToSingleCountry)
+    }
     toggle(event){
         event.preventDefault()
             this.setState((prevState)=>({
-                showUpdateCountry: !prevState.showUpdateCountry
+                showUpdateCountry: !prevState.showUpdateCountry,
+                // showAddAircraftToSingleCountry:  !prevState.showAddAircraftToSingleCountry
             }))
         
     }  
@@ -52,10 +59,14 @@ class SingleCountry extends Component{
        
             <button onClick={this.toggle}>Update Country</button>
             {
-                this.state.showUpdateCountry ?  <UpdateCountry updateCountry={this.updateCountry}/> : null
+                this.state.showUpdateCountry ? <UpdateCountry updateCountry={this.updateCountry}/> : null
                 
             }
-           </div>
+            {/* <button onClick={this.toggle}>Add aircraft</button>
+            {
+                this.state.showAddAircraftToSingleCountry ? <AddAircraftToSingleCountry addAircraftToSingleCountry={this.addAircraftToSingleCountry}/>:null
+            }*/}
+           </div> 
             
         )
     }
@@ -67,7 +78,9 @@ const mapStateToProps=(state)=>({
 
 const mapDispatchToProps=(dispatch)=>({
     getSingleCountry: (id)=>dispatch(getSingleCountryThunk(id)),
-    updateCountry:(updatedCountry,id) => dispatch(updateCountryThunk(updatedCountry, id))
+    updateCountry:(updatedCountry,id) => dispatch(updateCountryThunk(updatedCountry, id)),
+    // addAircraftToSingleCountry:(NewAircraftToSingleCountry)=>dispatch(addAircraftThunk(NewAircraftToSingleCountry))
+    
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleCountry)

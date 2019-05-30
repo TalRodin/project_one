@@ -45,8 +45,6 @@ class AllCountries extends React.Component{
                         <img src={country.flagUrl} height={100}/>
                         <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
                         <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
-                        
-                    
                     </div>
                 ))}
             <div>
