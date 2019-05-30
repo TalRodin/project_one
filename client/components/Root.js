@@ -15,7 +15,7 @@ import TopFive from './topfive'
 import Navbar from './Navbar';
 import AppBar from '@material-ui/core/AppBar';
 import UpdateCountry from './updatecountry'
-// import Home from './home'
+import Home from './home'
 
 
 const Root = () => {
@@ -37,15 +37,15 @@ const Root = () => {
        
       <Switch>
         <Route exact path="/countries/top5" component={TopFive} />
+        <Route exact path="/countries/top5" component={Home}/>
         <Route exact path="/countries" component={AllCountries} />
         <Route exact path="/aircrafts" component={AllAircrafts} /> 
         <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
         <Route  path="/countries/:id(\d+)" component={SingleCountry} />
-        {/* <Route  path="/countries/" component={UpdateCountry} /> */}
         <Route  path="/countries" component={AddCountry} />
         <Route  path="/aircrafts" component={AddAircraft} />
         
-        {/* <Route exact path='/' component={Home}/> */}
+       
       </Switch>
     </div>
     </Router>

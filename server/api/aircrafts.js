@@ -37,7 +37,8 @@ router.post('/', async(req,res,next)=>{
        const cost = req.body.cost
        const imageUrl = req.body.imageUrl
        const description = req.body.description
-       const aircrafts = await Aircrafts.create({make, model, year, type, cost, imageUrl, description})
+       const countryId = req.body.countryId
+       const aircrafts = await Aircrafts.create({make, model, year, type, cost, imageUrl, description, countryId})
        console.log(aircrafts)
        res.json(aircrafts)
     }catch(err){next(err)}

@@ -36,8 +36,8 @@ class NewAircraftForm extends Component{
         imageUrl:'',
         description:'',
         countryId:''}
-       
-       console.log('we are here', event.target)
+        
+       console.log('we are here', this.state)
     }
 
     handleChange(event){
