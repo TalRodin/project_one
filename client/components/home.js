@@ -36,16 +36,13 @@ class Home extends React.Component{
                         <CardActionArea key={top.id} style={{width: '400px', height:'200px'}}> 
                              <Card style={{width: '400px', height:'200px'}}>       
                                 <CardContent>
-                                
                                     <img src={top.flagUrl} align='left' height={140} width={180}/>
-                                    
                                     <Typography  variant="h5" component="h2">
                                         {top.name}
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary" component="p">
                                         GFI: {top.GFI}
                                     </Typography>
-                                    
                                 </CardContent>              
                              </Card>
                         </CardActionArea> 
