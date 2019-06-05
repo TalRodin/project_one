@@ -1,9 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Link, Switch,Route } from 'react-router-dom'
+import { NavLink, Switch,Route,Button } from 'react-router-dom'
 import {getTopFiveThunk} from '../reducers/countriesReducer'
-
-
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+const useStyles ={
+    card: {
+      maxWidth: 345,
+    },
+    media: {
+      height:140,
+    },
+    typography: {
+        align: "center",
+      },
+  };
 class Home extends React.Component{
     constructor(){
         super()
@@ -14,11 +30,26 @@ class Home extends React.Component{
     render(){
         return(
             <div>
-                <h3>Top 5 Countries based on GFI</h3>
-                <hr />
                 {this.props.topfive.map(top=>(
-                    <div key={top.id}>
-                        <h2>Name:{top.name} GFI:{top.GFI}</h2>
+                     <div style={{padding: '10px'}} key={top.id}>
+                         
+                        <CardActionArea key={top.id} style={{width: '400px', height:'200px'}}> 
+                             <Card style={{width: '400px', height:'200px'}}>       
+                                <CardContent>
+                                
+                                    <img src={top.flagUrl} align='left' height={140} width={180}/>
+                                    
+                                    <Typography  variant="h5" component="h2">
+                                        {top.name}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        GFI: {top.GFI}
+                                    </Typography>
+                                    
+                                </CardContent>              
+                             </Card>
+                        </CardActionArea> 
+                      
                     </div>
                 ))}
             </div>

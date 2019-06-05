@@ -35,26 +35,24 @@ class AllCountries extends React.Component{
         
     }
     render(){
-        console.log('----------',this)
         return(
             <div >
                 <h3>Countries</h3>
-                <hr />
-                {this.props.countries.map(country=>(
-                    <div key={country.id}>
-                        <img src={country.flagUrl} height={100}/>
-                        <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
-                        <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
-                    </div>
-                ))}
             <div>
             <button onClick={this.toggle}>Add New Country</button>
             {
                 this.state.showAddNewCountry ?  <NewCountryForm addCountry={this.addCountry}/> : null
                 
             }
-           </div>  
-             
+           </div> 
+                <hr />
+                {this.props.countries.map(country=>(
+                    <div key={country.id}>
+                        <img src={country.flagUrl} height={100} width={200}/>
+                        <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
+                        <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
+                    </div>
+                ))}
            </div>
            )
 }}

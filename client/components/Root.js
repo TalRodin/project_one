@@ -14,40 +14,43 @@ import AddAircraft from './formaircrafts'
 import TopFive from './topfive'
 import Navbar from './Navbar';
 import AppBar from '@material-ui/core/AppBar';
-import UpdateCountry from './updatecountry'
 import Home from './home'
+import Typography  from '@material-ui/core/Typography'
+import Toolbar from '@material-ui/core/Toolbar'
 
 
 const Root = () => {
 
   const style = {
-    background: '#90a4ae'
+    background: '#90a4ae',
   };
-
+  
   return (
     <Router>
-    <div>
-      <AppBar position = 'static' style = {style}>
-        <Navbar />
-      </AppBar>
+      <div>
+        <AppBar position = 'static' style = {style}>
+          <Navbar />
+        </AppBar>
 
-      <main>
-         <h1>AIRCRAFT</h1>
-      </main>
+        <main>
+          <Toolbar>
+            <Typography variant='title' color='inherit'  >
+              Astronomical Airforces
+            </Typography>
+          </Toolbar>
+        </main>
        
-      <Switch>
-        <Route exact path="/countries/top5" component={TopFive} />
-        <Route exact path="/countries/top5" component={Home}/>
-        <Route exact path="/countries" component={AllCountries} />
-        <Route exact path="/aircrafts" component={AllAircrafts} /> 
-        <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
-        <Route  path="/countries/:id(\d+)" component={SingleCountry} />
-        <Route  path="/countries" component={AddCountry} />
-        <Route  path="/aircrafts" component={AddAircraft} />
-        
-       
-      </Switch>
-    </div>
+        <Switch>
+          <Route exact path="/countries/top5" component={TopFive} />
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/countries" component={AllCountries} />
+          <Route exact path="/aircrafts" component={AllAircrafts} /> 
+          <Route  path="/aircrafts/:id(\d+)" component={SingleAircraft} />
+          <Route  path="/countries/:id(\d+)" component={SingleCountry} />
+          <Route  path="/countries" component={AddCountry} />
+          <Route  path="/aircrafts" component={AddAircraft} />
+        </Switch>
+      </div>
     </Router>
   )
 }

@@ -5,18 +5,20 @@ import { Link, Switch, Route } from 'react-router-dom'
 import {updateCountryThunk} from '../reducers/countryReducer'
 import UpdateCountry from './updatecountry'
 import {addAircraftThunk} from '../reducers/aircraftsReducer'
+import AddAircraftToSingleCountry from './addAircraftToSingle'
 
 
 class SingleCountry extends Component{
     constructor(){
         super()
         this.state={
-            showUpdateCountry:false
+            showUpdateCountry:false,
+            showAddAircraftToSingleCountry:false
         }
        
         this.toggle=this.toggle.bind(this)
         this.updateCountry=this.updateCountry.bind(this)
-        // this.addAircraftToSingleCountry=this.addAircraftToSingleCountry.bind(this)
+        this.addAircraftToSingleCountry=this.addAircraftToSingleCountry.bind(this)
     }
 
     componentDidMount(){
@@ -62,12 +64,16 @@ class SingleCountry extends Component{
                 this.state.showUpdateCountry ? <UpdateCountry updateCountry={this.updateCountry}/> : null
                 
             }
+            <hr />
+            
             {/* <button onClick={this.toggle}>Add aircraft</button>
             {
                 this.state.showAddAircraftToSingleCountry ? <AddAircraftToSingleCountry addAircraftToSingleCountry={this.addAircraftToSingleCountry}/>:null
-            }*/}
-           </div> 
-            
+            }
+           </div>  */}
+
+            <AddAircraftToSingleCountry />
+            </div> 
         )
     }
 }
@@ -79,7 +85,7 @@ const mapStateToProps=(state)=>({
 const mapDispatchToProps=(dispatch)=>({
     getSingleCountry: (id)=>dispatch(getSingleCountryThunk(id)),
     updateCountry:(updatedCountry,id) => dispatch(updateCountryThunk(updatedCountry, id)),
-    // addAircraftToSingleCountry:(NewAircraftToSingleCountry)=>dispatch(addAircraftThunk(NewAircraftToSingleCountry))
+    addAircraftToSingleCountry:(NewAircraftToSingleCountry)=>dispatch(addAircraftThunk(NewAircraftToSingleCountry))
     
 })
 

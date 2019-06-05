@@ -34,11 +34,16 @@ class SingleAircraft extends React.Component{
         return (
             <div>
             <div>
-                <h3>Make: {this.props.aircraft.make}</h3>
-
-                <img src={this.props.aircraft.imageUrl} height={100}/>
+                <td>
+                <tr>Make: {this.props.aircraft.make}</tr>
+                <tr>Model: {this.props.aircraft.model}</tr>
+                <tr>Year: {this.props.aircraft.year}</tr>
+                <tr>Type: {this.props.aircraft.type}</tr>
+                <tr>Cost: {this.props.aircraft.cost}</tr>
+                <tr>Description: {this.props.aircraft.description}</tr>
+                </td>
             </div>
-
+            <img src={this.props.aircraft.imageUrl} height={100}/>
             <div>
                 <Link to={`/countries`}>Countries</Link>
             </div>

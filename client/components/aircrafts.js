@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link, Switch,Route } from 'react-router-dom'
 import {getAllAircraftsThunk} from '../reducers/aircraftsReducer'
-import  {deleteAircraftThunk}  from '../reducers/aircraftReducer'
+import  {deleteAircraftThunk}  from '../reducers/aircraftsReducer'
 import {addAircraftThunk} from '../reducers/aircraftsReducer'
 import NewAircraftForm from './formaircrafts'
 
@@ -23,7 +23,7 @@ class AllAircrafts extends React.Component{
     }
     deleteAircraft(id){
         this.props.deleteAircraft(id)
-        this.props.getAllAircrafts()
+        // this.props.getAllAircrafts()
     }
     addAircraft(newAircraft){
         this.props.addAircraft(newAircraft)
@@ -37,10 +37,18 @@ class AllAircrafts extends React.Component{
         
     }
     render(){
+        console.log('this.props--------->',this.props)
         return(
             <div>
                 <h3>Aircrafts</h3>
+                <div>
+            <button onClick={this.toggle}>Add New Aircraft</button>
+            {
+                this.state.showAddNewAircraft ?  <NewAircraftForm addAircraft={this.addAircraft}/> : null
+            }
+           </div>    
                 <hr />
+                
                 {this.props.aircrafts.map(aircraft=>(
                     <div key={aircraft.id}>
                         <img src={aircraft.imageUrl} height={100}/>
@@ -48,12 +56,7 @@ class AllAircrafts extends React.Component{
                         <button onClick={()=>this.deleteAircraft(aircraft.id)}>Delete</button>
                     </div>
                 ))}
-            <div>
-            <button onClick={this.toggle}>Add New Aircraft</button>
-            {
-                this.state.showAddNewAircraft ?  <NewAircraftForm addAircraft={this.addAircraft}/> : null
-            }
-           </div>    
+           
            </div>
            )
 }}

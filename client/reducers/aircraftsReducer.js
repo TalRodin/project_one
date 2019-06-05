@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const GOT_ALL_AIRCRAFTS='GOT_ALL_AIRCRAFTS'
 const ADD_AIRCRAFT='ADD_AIRCRAFT'
+const DELETE_AIRCRAFT= 'DELETE_AIRCRAFT'
 
 const gotAllAircrafts=(aircrafts)=>({
     type: GOT_ALL_AIRCRAFTS,
@@ -13,6 +14,11 @@ const addAircraft = (aircraft)=>({
     aircraft
 })
 
+const deleteAircraft = (aircraftId)=>({
+    type: DELETE_AIRCRAFT,
+    aircraftId
+ })
+
 export const getAllAircraftsThunk=()=>async (dispatch)=>{
     const {data} =await axios.get('/api/aircrafts')
     dispatch(gotAllAircrafts(data))
@@ -23,10 +29,22 @@ export const addAircraftThunk=(aircraft)=> async(dispatch)=>{
     dispatch(addAircraft(data))
 }
 
+export const deleteAircraftThunk=(id)=> async (dispatch)=>{
+    console.log('delete before aircraft------>',id)
+    await axios.delete(`/api/aircrafts/${id}`)
+    // console.log('delete after aircraft------>', data)
+    dispatch(deleteAircraft(id))
+ }
+
+
 export const aircraftsReducer = (state=[], action)=>{
     switch(action.type){
         case GOT_ALL_AIRCRAFTS:
             return action.aircrafts
+        case DELETE_AIRCRAFT:
+            console.log('-----------action---->',action)
+            console.log('-----------state---->',state)
+            return state.filter(aircraft=>aircraft.id!=action.aircraftId)
         case ADD_AIRCRAFT:
             return [...state, action.aircraft]
         default:

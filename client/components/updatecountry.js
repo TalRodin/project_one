@@ -24,7 +24,8 @@ class UpdateCountry extends React.Component{
        event.preventDefault() 
 
           let updatedCountry={
-              name:this.state.name,
+            //   name:this.state.name,
+              name: (this.state.name)?this.state.name:this.props.country.name,
               GFI:this.state.GFI,
               flagUrl:this.state.flagUrl
             //   name: (this.state.name)?this.state.name:this.props.country.name,
