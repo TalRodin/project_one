@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link, Switch,Route } from 'react-router-dom'
 import {getAllCountriesThunk} from '../reducers/countriesReducer'
-import  {deleteCountryThunk}  from '../reducers/countryReducer'
+import  {deleteCountryThunk}  from '../reducers/countriesReducer'
 import {addCountryThunk} from '../reducers/countriesReducer'
 import NewCountryForm from './formcountries'
 
@@ -21,7 +21,7 @@ class AllCountries extends React.Component{
     }
     deleteCountry(id){
         this.props.deleteCountry(id)
-        this.props.getAllCountries()
+        // this.props.getAllCountries()
     }
     addCountry(newCountry){
         this.props.addCountry(newCountry)

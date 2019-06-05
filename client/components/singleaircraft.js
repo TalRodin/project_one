@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {updateAircraftThunk} from '../reducers/aircraftReducer'
-import { Link, Switch, Route } from 'react-router-dom'
+import { Link, Switch, Route,Table } from 'react-router-dom'
 import UpdateAircraft from './updateaircraft';
 import {getSingleAircraftThunk} from '../reducers/aircraftReducer'
 
@@ -34,14 +34,18 @@ class SingleAircraft extends React.Component{
         return (
             <div>
             <div>
-                <td>
-                <tr>Make: {this.props.aircraft.make}</tr>
-                <tr>Model: {this.props.aircraft.model}</tr>
-                <tr>Year: {this.props.aircraft.year}</tr>
-                <tr>Type: {this.props.aircraft.type}</tr>
-                <tr>Cost: {this.props.aircraft.cost}</tr>
-                <tr>Description: {this.props.aircraft.description}</tr>
-                </td>
+                <ul>
+                
+                <li>Make:{this.props.aircraft.make}</li>
+                
+                <li>Model: {this.props.aircraft.model}</li>
+               
+                <li>Year: {this.props.aircraft.year}</li>
+                <li>Type: {this.props.aircraft.type}</li>
+                <li>Cost: {this.props.aircraft.cost}</li>
+                <li>Description: {this.props.aircraft.description}</li>
+             
+                </ul>
             </div>
             <img src={this.props.aircraft.imageUrl} height={100}/>
             <div>
