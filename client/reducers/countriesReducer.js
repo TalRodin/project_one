@@ -26,6 +26,7 @@ const deleteCountry = (countryId)=>({
 
 export const getAllCountriesThunk=()=>async (dispatch)=>{
     const {data} =await axios.get('/api/countries')
+    console.log('got_all_countries---------->thunk after******', data)
     dispatch(gotAllCountries(data))
 }
 
@@ -46,7 +47,8 @@ export const deleteCountryThunk=(id)=> async (dispatch)=>{
  }
 
 export const countriesReducer = (state=[], action)=>{
-
+    console.log('got_all_countries---------->state******', state)
+    console.log('got_all_countries---------->action******', action)
     switch(action.type){
         case GOT_ALL_COUNTRIES:
             return action.countries

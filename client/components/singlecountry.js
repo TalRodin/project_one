@@ -23,6 +23,7 @@ class SingleCountry extends Component{
 
     componentDidMount(){
           this.props.getSingleCountry(this.props.match.params.id) 
+          console.log('another componentDidMount in single Country----------> ', this.props)
     }            
     updateCountry(updatedCountry){
         this.props.updateCountry(updatedCountry, this.props.match.params.id)
@@ -42,7 +43,9 @@ class SingleCountry extends Component{
     render() {
         let obj=this.props.country
         let id=this.props.country.id
-        console.log('I AM HERE  THUNK>>>>>>>>>>>>>', this.props.country.id)
+        console.log('voila ------------------->', (obj.aircrafts!=undefined) ? obj.aircrafts.length :false)
+        
+        
         return (
             
             <div>
@@ -50,6 +53,7 @@ class SingleCountry extends Component{
             <div>
                 <h3>Name: {this.props.country.name}</h3>
                 <h3>GFI: {this.props.country.GFI}</h3>
+                <h3>Number of aircrafts:{(obj.aircrafts!=undefined) ? obj.aircrafts.length :false}</h3>
                 <img src={this.props.country.flagUrl} height={100}/>
             </div>
 

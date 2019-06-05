@@ -5,6 +5,7 @@ import {getAllCountriesThunk} from '../reducers/countriesReducer'
 import  {deleteCountryThunk}  from '../reducers/countriesReducer'
 import {addCountryThunk} from '../reducers/countriesReducer'
 import NewCountryForm from './formcountries'
+import {getSingleCountryThunk} from '../reducers/countryReducer'
 
 class AllCountries extends React.Component{
     constructor(){
@@ -18,10 +19,10 @@ class AllCountries extends React.Component{
     }
     componentDidMount(){
         this.props.getAllCountries();
+        // this.props.getSingleCountry(this.props.countries.id) 
     }
     deleteCountry(id){
         this.props.deleteCountry(id)
-        // this.props.getAllCountries()
     }
     addCountry(newCountry){
         this.props.addCountry(newCountry)
@@ -35,7 +36,9 @@ class AllCountries extends React.Component{
         
     }
     render(){
+        console.log('this is for number of aircraft in single country----------->', this.props.countries)
         return(
+
             <div >
                 <h3>Countries</h3>
             <div>
@@ -51,6 +54,7 @@ class AllCountries extends React.Component{
                         <img src={country.flagUrl} height={100} width={200}/>
                         <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
                         <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
+                        
                     </div>
                 ))}
            </div>
@@ -64,6 +68,7 @@ const mapStateToProps=(state)=>({
 
 const mapDispatchToProps=(dispatch)=>({
     getAllCountries: ()=>dispatch(getAllCountriesThunk()),
+    // getSingleCountry: (id)=>dispatch(getSingleCountryThunk(id)),
     deleteCountry: (id)=>dispatch(deleteCountryThunk(id)),
     addCountry:(newCountry)=>dispatch(addCountryThunk(newCountry))
 })

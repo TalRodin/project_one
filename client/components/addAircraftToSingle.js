@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
 import {addAircraftThunk} from '../reducers/aircraftsReducer'
 import {getAllCountriesThunk} from '../reducers/countriesReducer'
+import {getSingleCountryThunk} from '../reducers/countryReducer'
 
 class AddAircraftToSingleCountry extends Component{
     constructor(){
@@ -23,6 +24,9 @@ class AddAircraftToSingleCountry extends Component{
      }
      componentDidMount(){
         this.props.getAllCountries();
+        // this.props.getSingleCountry() 
+        // this.props.match.params.id
+        // console.log('componentDidMount=---------->',this.props.countries.id)
     }
     async handleSubmit(event){
        event.preventDefault() 
@@ -35,7 +39,7 @@ class AddAircraftToSingleCountry extends Component{
         cost:0,
         imageUrl:'',
         description:'',
-        countryId:''
+        countryId: ''
     }
         
        console.log('we are here', this.state)
@@ -47,7 +51,7 @@ class AddAircraftToSingleCountry extends Component{
         })
     }
     render(){
-        console.log('we are here---------->', this)
+        console.log('we are here---------->', this.props)
         return(
             <div id='container'>
 
@@ -81,16 +85,16 @@ class AddAircraftToSingleCountry extends Component{
                         <input type='text' name='description'  value = {this.state.description} onChange={this.handleChange}/>
                     </label>
 
-                    <label htmlFor='countryId'>Country:</label>
-                    <select name='countryId'  value={this.state.countryId} onChange={this.handleChange}>   
+                  <label htmlFor='countryId'>Country:</label>
+                     <select name='countryId'  value={this.state.countryId} onChange={this.handleChange}>   
                     
                
-                        {
-                            this.props.countries.map(country=>(
-                                <option key={country.id} value={country.id}>{country.name}</option>
-                            ))
-                        }
-                    </select>
+                         {
+                             this.props.countries.map(country=>(
+                                 <option key={country.id} value={country.id}>{country.name}</option>
+                             ))
+                         }
+                     </select>
                     
 
                    <button type='submit'>Submit</button>
@@ -106,6 +110,7 @@ const mapStateToProps=(state)=>({
 })
 const mapDispatchToProps=(dispatch)=>({
     getAllCountries: ()=>dispatch(getAllCountriesThunk()),
+    // getSingleCountry: (id)=>dispatch(getSingleCountryThunk(id)),
     addAircraft:(newAircraft)=>dispatch(addAircraftThunk(newAircraft))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(AddAircraftToSingleCountry);
