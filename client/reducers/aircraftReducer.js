@@ -30,8 +30,6 @@ export const aircraftReducer = (state = [], action) => {
           switch(action.type){
             case GOT_SINGLE_AIRCRAFT:
                 return action.aircraft
-            // case DELETE_AIRCRAFT:
-            //     return action
             case UPDATE_AIRCRAFT:
                 return action.aircraft
             default: 
