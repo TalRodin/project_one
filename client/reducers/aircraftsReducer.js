@@ -30,9 +30,7 @@ export const addAircraftThunk=(aircraft)=> async(dispatch)=>{
 }
 
 export const deleteAircraftThunk=(id)=> async (dispatch)=>{
-    console.log('delete before aircraft------>',id)
     await axios.delete(`/api/aircrafts/${id}`)
-    // console.log('delete after aircraft------>', data)
     dispatch(deleteAircraft(id))
  }
 
@@ -42,8 +40,6 @@ export const aircraftsReducer = (state=[], action)=>{
         case GOT_ALL_AIRCRAFTS:
             return action.aircrafts
         case DELETE_AIRCRAFT:
-            console.log('-----------action---->',action)
-            console.log('-----------state---->',state)
             return state.filter(aircraft=>aircraft.id!=action.aircraftId)
         case ADD_AIRCRAFT:
             return [...state, action.aircraft]

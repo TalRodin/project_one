@@ -30,7 +30,6 @@ class SingleAircraft extends React.Component{
     render() {
         let obj=this.props.aircraft
         let id=this.props.aircraft.id
-        console.log('I AM HERE  THUNK>>>>>>>>>>>>>', this.props.aircraft)
         return (
             <div>
             <div>

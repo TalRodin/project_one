@@ -21,7 +21,6 @@ export const getSingleAircraftThunk=(id)=> async (dispatch)=>{
 
 export const updateAircraftThunk=(aircraft, id)=>async (dispatch)=>{
    const {data}=await axios.put(`/api/aircrafts/${id}`, aircraft)
-   console.log('just data===============------------->',data)
    dispatch(updateAircraft(data.aircrafts))
 
 }
@@ -32,7 +31,6 @@ export const aircraftReducer = (state = [], action) => {
             case GOT_SINGLE_AIRCRAFT:
                 return action.aircraft
             case UPDATE_AIRCRAFT:
-                console.log('state------------------->', Object.assign({}, {country: state.country}, action.aircraft) )
                 return Object.assign({}, {country: state.country}, action.aircraft) 
             default: 
                 return state

@@ -27,7 +27,6 @@ class UpdateAircraft extends React.Component{
     }
 
     handleSubmit(event){
-        console.log('`````````````',this.props)
        event.preventDefault() 
 
           let updatedAircraft={
@@ -92,7 +91,6 @@ class UpdateAircraft extends React.Component{
 
 
     render(){
-        console.log('WE-----ARE-----HERE-----:',this.props)
         return(
             
            

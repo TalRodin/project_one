@@ -37,7 +37,6 @@ class AllAircrafts extends React.Component{
         
     }
     render(){
-        console.log('this.props--------->',this.props)
         return(
             <div>
                 <h3>Aircrafts</h3>
