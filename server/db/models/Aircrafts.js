@@ -18,10 +18,14 @@ const Aircrafts=db.define('aircrafts',{
           }
     },
     year:{
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         validate:{
             isAfter: "1902-12-31", 
-        }
+        },
+        get: function()  {
+              return this.getDataValue('year').toISOString().slice(0,10);
+            }
+      
     },
     type:{
         type: Sequelize.STRING,
