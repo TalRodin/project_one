@@ -65,7 +65,15 @@ class NewAircraftForm extends Component{
                     </label>
 
                     <label htmlFor='type'>Type:
-                        <input type='text' name='type'  value = {this.state.type} onChange={this.handleChange}/>
+                        {/* <input type='text' name='type'  value = {this.state.type} onChange={this.handleChange}/> */}
+                        <select name='type' value = {this.state.type} onChange={this.handleChange }>
+                             <option value="Attack">Attack</option>
+                             <option value="Bomber">Bomber</option>
+                             <option value="Versatile">Versatile</option>
+                             <option value="Transport">Transport</option>
+                             <option value="Reconoissance">Reconoissance</option>
+                             <option value="Rescue">Rescue</option>
+                        </select>
                     </label>
 
                     <label htmlFor='cost'>Cost:
