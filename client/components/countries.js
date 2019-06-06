@@ -6,6 +6,8 @@ import  {deleteCountryThunk}  from '../reducers/countriesReducer'
 import {addCountryThunk} from '../reducers/countriesReducer'
 import NewCountryForm from './formcountries'
 import {getSingleCountryThunk} from '../reducers/countryReducer'
+import {getAllAircraftsThunk} from '../reducers/aircraftsReducer'
+import { get } from 'http';
 
 class AllCountries extends React.Component{
     constructor(){
@@ -19,7 +21,7 @@ class AllCountries extends React.Component{
     }
     componentDidMount(){
         this.props.getAllCountries();
-        // this.props.getSingleCountry(this.props.countries.id) 
+        this.props.getAllAircrafts();
     }
     deleteCountry(id){
         this.props.deleteCountry(id)
@@ -36,7 +38,13 @@ class AllCountries extends React.Component{
         
     }
     render(){
-        console.log('this is for number of aircraft in single country----------->', this.props.countries)
+        let aircrafts=this.props.aircrafts
+        let countries=this.props.countries
+        
+        
+        console.log('this is for number of aircraft in single country----------->', aircrafts.filter(aircraft=>aircraft.countryId===countries[3].id).length)
+        console.log('this is for number of aircraft in single country----------->', countries)
+
         return(
 
             <div >
@@ -54,21 +62,21 @@ class AllCountries extends React.Component{
                         <img src={country.flagUrl} height={100} width={200}/>
                         <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
                         <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
-                        
+                        <h4><i>{country.name} Number of aircrafts: </i>{aircrafts.filter(aircraft=>aircraft.countryId===country.id).length}</h4>   
                     </div>
                 ))}
            </div>
            )
 }}
 
-
 const mapStateToProps=(state)=>({
-    countries: state.countriesReducer
+    countries: state.countriesReducer,
+    aircrafts: state.aircraftsReducer
 })
 
 const mapDispatchToProps=(dispatch)=>({
     getAllCountries: ()=>dispatch(getAllCountriesThunk()),
-    // getSingleCountry: (id)=>dispatch(getSingleCountryThunk(id)),
+    getAllAircrafts: ()=>dispatch(getAllAircraftsThunk()),
     deleteCountry: (id)=>dispatch(deleteCountryThunk(id)),
     addCountry:(newCountry)=>dispatch(addCountryThunk(newCountry))
 })
