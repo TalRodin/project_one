@@ -70,7 +70,17 @@ class AddAircraftToSingleCountry extends Component{
                     </label>
 
                     <label htmlFor='type'>Type:
-                        <input type='text' name='type'  value = {this.state.type} onChange={this.handleChange}/>
+                        {/* <input type='text' name='type'  value = {this.state.type} onChange={this.handleChange}/> */}
+                        <select name='type' value = {this.state.type} onChange={this.handleChange }>
+                             <option></option>
+                             <option value="Attack">Attack</option>
+                             <option value="Attack">Attack</option>
+                             <option value="Bomber">Bomber</option>
+                             <option value="Versatile">Versatile</option>
+                             <option value="Transport">Transport</option>
+                             <option value="Reconoissance">Reconoissance</option>
+                             <option value="Rescue">Rescue</option>
+                        </select>
                     </label>
 
                     <label htmlFor='cost'>Cost:
@@ -88,7 +98,7 @@ class AddAircraftToSingleCountry extends Component{
                   <label htmlFor='countryId'>Country:</label>
                      <select name='countryId'  value={this.state.countryId} onChange={this.handleChange}>   
                     
-               
+                         <option></option>
                          {
                              this.props.countries.map(country=>(
                                  <option key={country.id} value={country.id}>{country.name}</option>

@@ -67,6 +67,7 @@ class NewAircraftForm extends Component{
                     <label htmlFor='type'>Type:
                         {/* <input type='text' name='type'  value = {this.state.type} onChange={this.handleChange}/> */}
                         <select name='type' value = {this.state.type} onChange={this.handleChange }>
+                             <option></option>
                              <option value="Attack">Attack</option>
                              <option value="Bomber">Bomber</option>
                              <option value="Versatile">Versatile</option>
@@ -91,7 +92,7 @@ class NewAircraftForm extends Component{
                     <label htmlFor='countryId'>Country:</label>
                     <select name='countryId'  value={this.state.countryId} onChange={this.handleChange}>   
                     
-               
+                        <option></option>
                         {
                             this.props.countries.map(country=>(
                                 <option key={country.id} value={country.id}>{country.name}</option>

@@ -109,8 +109,17 @@ class UpdateAircraft extends React.Component{
                             <label htmlFor='year'>year:</label>
                             <input type='text' name='year' value={this.state.year} onChange={this.handleYear} />
 
-                            <label htmlFor='type'>type:</label>
-                            <input type='text' name='type' value={this.state.type} onChange={this.handleType} />
+                            <label htmlFor='type'>Type:
+                            <select name='type' value = {this.state.type} onChange={this.handleType }>
+                             <option></option>
+                             <option value="Attack">Attack</option>
+                             <option value="Bomber">Bomber</option>
+                             <option value="Versatile">Versatile</option>
+                             <option value="Transport">Transport</option>
+                             <option value="Reconoissance">Reconoissance</option>
+                             <option value="Rescue">Rescue</option>
+                             </select>
+                            </label>
 
                             <label htmlFor='cost'>cost:</label>
                             <input type='text' name='cost' value={this.state.cost} onChange={this.handleCost} />
