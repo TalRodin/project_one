@@ -34,7 +34,10 @@ const Aircrafts=db.define('aircrafts',{
         }
     },
     cost:{
-        type: Sequelize.DECIMAL(10, 6, 'int')
+        type: Sequelize.DECIMAL,
+        get: function(){
+            return (this.getDataValue('cost')*1000000)
+        }
     },
     imageUrl:{
         type: Sequelize.TEXT,
@@ -54,8 +57,6 @@ Aircrafts.getAircraftByType = function(AircraftType){
             type: AircraftType
      }})
 }
-// Aircrafts.cost = function(){
-//     return Aircrafts.cost*1000000
-// }
+
 // -----Table Aircrafts-----
 module.exports = Aircrafts;

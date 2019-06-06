@@ -43,7 +43,7 @@ class SingleAircraft extends React.Component{
                
                 <li>Year: {this.props.aircraft.year}</li>
                 <li>Type: {this.props.aircraft.type}</li>
-                <li>Cost: {this.props.aircraft.cost}</li>
+                <li>Cost: $ {this.props.aircraft.cost}</li>
                 <li>Description: {this.props.aircraft.description}</li>
                 <li>Successor: {(m!==undefined) ? m.slice(0,m.indexOf(m.match((/\d/g)).join('')[0]))+(parseInt(m.match((/\d/g)).join(''))-1).toString() : false}</li>
                 </ul>
