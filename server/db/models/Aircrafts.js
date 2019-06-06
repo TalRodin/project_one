@@ -52,10 +52,12 @@ const Aircrafts=db.define('aircrafts',{
 })
 
 Aircrafts.getAircraftByType = function(AircraftType){
-    return Aircrafts.findOne({
+    return Aircrafts.findAll({
         where:{
-            type: AircraftType
-     }})
+            type: {
+                $overlap: [AircraftType]
+     }}
+    })
 }
 
 // -----Table Aircrafts-----
