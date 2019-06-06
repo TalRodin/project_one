@@ -53,6 +53,7 @@ class AllAircrafts extends React.Component{
                         <img src={aircraft.imageUrl} height={100}/>
                         <Link key={aircraft.id} to={`/aircrafts/${aircraft.id}`}>{aircraft.make}</Link>
                         <button onClick={()=>this.deleteAircraft(aircraft.id)}>Delete</button>
+                        
                     </div>
                 ))}
            

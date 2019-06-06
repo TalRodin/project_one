@@ -28,8 +28,10 @@ class SingleAircraft extends React.Component{
             }))
     }
     render() {
+       
         let obj=this.props.aircraft
-        let id=this.props.aircraft.id
+        let m=this.props.aircraft.model
+ 
         return (
             <div>
             <div>
@@ -43,7 +45,7 @@ class SingleAircraft extends React.Component{
                 <li>Type: {this.props.aircraft.type}</li>
                 <li>Cost: {this.props.aircraft.cost}</li>
                 <li>Description: {this.props.aircraft.description}</li>
-             
+                <li>Successor: {(m!==undefined) ? m.slice(0,m.indexOf(m.match((/\d/g)).join('')[0]))+(parseInt(m.match((/\d/g)).join(''))-1).toString() : false}</li>
                 </ul>
             </div>
             <img src={this.props.aircraft.imageUrl} height={100}/>
