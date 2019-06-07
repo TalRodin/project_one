@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
 import {addAircraftThunk} from '../reducers/aircraftsReducer'
 import {getAllCountriesThunk} from '../reducers/countriesReducer'
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 class NewAircraftForm extends Component{
     constructor(){

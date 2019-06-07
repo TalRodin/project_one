@@ -5,8 +5,19 @@ import {getAllAircraftsThunk} from '../reducers/aircraftsReducer'
 import  {deleteAircraftThunk}  from '../reducers/aircraftsReducer'
 import {addAircraftThunk} from '../reducers/aircraftsReducer'
 import NewAircraftForm from './formaircrafts'
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 
-
+const useStyles = {
+    button: {
+        margin: 1,
+      },
+      rightIcon: {
+        marginLeft: 1,
+      },
+  };
 
 class AllAircrafts extends React.Component{
     constructor(){
@@ -23,43 +34,45 @@ class AllAircrafts extends React.Component{
     }
     deleteAircraft(id){
         this.props.deleteAircraft(id)
-        // this.props.getAllAircrafts()
     }
     addAircraft(newAircraft){
         this.props.addAircraft(newAircraft)
     }
-
     toggle(event){
         event.preventDefault()
             this.setState((prevState)=>({
                 showAddNewAircraft: !prevState.showAddNewAircraft
             }))
-        
     }
     render(){
+        const classes = useStyles;
         return(
             <div>
                 <h3>Aircrafts</h3>
                 <div>
-            <button onClick={this.toggle}>Add New Aircraft</button>
-            {
+                <Fab size="small" color="secondary" aria-label="Add" className={classes.margin} onClick={this.toggle}>
+                    <AddIcon />
+                </Fab>
+                {
                 this.state.showAddNewAircraft ?  <NewAircraftForm addAircraft={this.addAircraft}/> : null
-            }
-           </div>    
+                }
+                </div>    
                 <hr />
                 
                 {this.props.aircrafts.map(aircraft=>(
                     <div key={aircraft.id}>
                         <img src={aircraft.imageUrl} height={100}/>
                         <Link key={aircraft.id} to={`/aircrafts/${aircraft.id}`}>{aircraft.make}</Link>
-                        <button onClick={()=>this.deleteAircraft(aircraft.id)}>Delete</button>
-                        
+                        {/* <button onClick={()=>this.deleteAircraft(aircraft.id)}></button> */}
+                        <IconButton aria-label="Delete" className={classes.margin} onClick={()=>this.deleteAircraft(aircraft.id)}>
+                           <DeleteIcon fontSize="small" />
+                        </IconButton>
                     </div>
                 ))}
-           
            </div>
            )
-}}
+        }
+    }
 const mapStateToProps=(state)=>({
     aircrafts: state.aircraftsReducer
 })

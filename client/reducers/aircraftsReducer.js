@@ -25,7 +25,9 @@ export const getAllAircraftsThunk=()=>async (dispatch)=>{
 }
 
 export const addAircraftThunk=(aircraft)=> async(dispatch)=>{
+    console.log('in the addAircraftThunk before=---====----====---===--->', aircraft)
     const {data}=await axios.post('/api/aircrafts', aircraft)
+    console.log('in the addAircraftThunk after=---====----====---===--->', data)
     dispatch(addAircraft(data))
 }
 
@@ -42,6 +44,8 @@ export const aircraftsReducer = (state=[], action)=>{
         case DELETE_AIRCRAFT:
             return state.filter(aircraft=>aircraft.id!=action.aircraftId)
         case ADD_AIRCRAFT:
+            console.log('in the addAircraftThunk before state=---====----====---===--->', state)
+            console.log('in the addAircraftThunk after  action=---====----====---===--->', action)
             return [...state, action.aircraft]
         default:
             return state    

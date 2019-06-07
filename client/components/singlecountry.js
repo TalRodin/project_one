@@ -16,7 +16,8 @@ class SingleCountry extends Component{
             showAddAircraftToSingleCountry:false
         }
        
-        this.toggle=this.toggle.bind(this)
+        this.toggle_update_country=this.toggle_update_country.bind(this)
+        this.toggle_add_aircraft=this.toggle_add_aircraft.bind(this)
         this.updateCountry=this.updateCountry.bind(this)
         this.addAircraftToSingleCountry=this.addAircraftToSingleCountry.bind(this)
     }
@@ -32,20 +33,25 @@ class SingleCountry extends Component{
     addAircraftToSingleCountry(NewAircraftToSingleCountry){
         this.props.addAircraftToSingleCountry(NewAircraftToSingleCountry)
     }
-    toggle(event){
+    toggle_update_country(event){
         event.preventDefault()
             this.setState((prevState)=>({
-                showUpdateCountry: !prevState.showUpdateCountry,
-                // showAddAircraftToSingleCountry:  !prevState.showAddAircraftToSingleCountry
-            }))
-        
+                showUpdateCountry: !prevState.showUpdateCountry
+              
+            })) 
     }  
+    toggle_add_aircraft(event){
+        event.preventDefault()
+            this.setState((prevState)=>({
+                showAddAircraftToSingleCountry:  !prevState.showAddAircraftToSingleCountry
+            })) 
+    }
     render() {
         let obj=this.props.country
         let id=this.props.country.id
         console.log('voila ------------------->', (obj.aircrafts!=undefined) ? obj.aircrafts.length :false)
         
-        
+        console.log('!!!!!!!!!!!!!!!!', this)
         return (
             
             <div>
@@ -63,27 +69,30 @@ class SingleCountry extends Component{
             </div>
             {(obj.aircrafts!==undefined) ? obj.aircrafts.map(aircraft=>(<Link key={aircraft.id} to={`/aircrafts/${aircraft.id}`}>{aircraft.make}</Link>)) : false}
        
-            <button onClick={this.toggle}>Update Country</button>
+            <button onClick={this.toggle_update_country}>Update Country</button>
             {
                 this.state.showUpdateCountry ? <UpdateCountry updateCountry={this.updateCountry}/> : null
                 
             }
             <hr />
             
-            {/* <button onClick={this.toggle}>Add aircraft</button>
+            <button onClick={this.toggle_add_aircraft}>Add aircraft</button>
             {
                 this.state.showAddAircraftToSingleCountry ? <AddAircraftToSingleCountry addAircraftToSingleCountry={this.addAircraftToSingleCountry}/>:null
             }
-           </div>  */}
+            {/* <AddAircraftToSingleCountry /> */}
+           </div> 
 
-            <AddAircraftToSingleCountry />
-            </div> 
+            
+
         )
     }
 }
 
 const mapStateToProps=(state)=>({
+    
     country: state.countryReducer //it goes from index.js combineReducer
+    
 })
 
 const mapDispatchToProps=(dispatch)=>({

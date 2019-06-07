@@ -7,8 +7,19 @@ import {addCountryThunk} from '../reducers/countriesReducer'
 import NewCountryForm from './formcountries'
 import {getSingleCountryThunk} from '../reducers/countryReducer'
 import {getAllAircraftsThunk} from '../reducers/aircraftsReducer'
-import { get } from 'http';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 
+const useStyles = {
+    button: {
+        margin: 1,
+      },
+      rightIcon: {
+        marginLeft: 1,
+      },
+  };
 class AllCountries extends React.Component{
     constructor(){
         super()
@@ -44,13 +55,15 @@ class AllCountries extends React.Component{
         
         console.log('this is for number of aircraft in single country----------->', aircrafts.filter(aircraft=>aircraft.countryId===countries[3].id).length)
         console.log('this is for number of aircraft in single country----------->', countries)
-
+        const classes = useStyles;
         return(
 
             <div >
                 <h3>Countries</h3>
             <div>
-            <button onClick={this.toggle}>Add New Country</button>
+            <Fab size="small" color="secondary" aria-label="Add" className={classes.margin} onClick={this.toggle}>
+                        <AddIcon />
+                 </Fab>
             {
                 this.state.showAddNewCountry ?  <NewCountryForm addCountry={this.addCountry}/> : null
                 
@@ -61,7 +74,9 @@ class AllCountries extends React.Component{
                     <div key={country.id}>
                         <img src={country.flagUrl} height={100} width={200}/>
                         <Link key={country.id} to={`/countries/${country.id}`}>{country.name}</Link>
-                        <button onClick={()=>this.deleteCountry(country.id)}>Delete</button>
+                        <IconButton aria-label="Delete" className={classes.margin} onClick={()=>this.deleteCountry(country.id)}>
+                                 <DeleteIcon fontSize="small" />
+                        </IconButton>
                         <h4><i>{country.name} Number of aircrafts: </i>{aircrafts.filter(aircraft=>aircraft.countryId===country.id).length}</h4>   
                     </div>
                 ))}

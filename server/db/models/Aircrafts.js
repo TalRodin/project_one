@@ -55,7 +55,7 @@ Aircrafts.getAircraftByType = function(AircraftType){
     return Aircrafts.findAll({
         where:{
             type: {
-                $overlap: [AircraftType]
+                $overlap: AircraftType
      }}
     })
 }
