@@ -54,11 +54,11 @@ const Aircrafts=db.define('aircrafts',{
 Aircrafts.getAircraftByType = function(AircraftType){
     return Aircrafts.findAll({
         where:{
-            type: {
-                $overlap: AircraftType
-     }}
+            type: AircraftType
+        }
     })
 }
 
 // -----Table Aircrafts-----
 module.exports = Aircrafts;
+

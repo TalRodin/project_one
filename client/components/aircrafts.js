@@ -9,6 +9,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
+import {findTypeThunk} from '../reducers/aircraftsReducer'
+import Search from '../components/searchtype'
 
 const useStyles = {
     button: {
@@ -28,6 +30,7 @@ class AllAircrafts extends React.Component{
         this.deleteAircraft=this.deleteAircraft.bind(this)
         this.toggle=this.toggle.bind(this)
         this.addAircraft=this.addAircraft.bind(this)
+        
     }
     componentDidMount(){
         this.props.getAllAircrafts();
@@ -44,11 +47,14 @@ class AllAircrafts extends React.Component{
                 showAddNewAircraft: !prevState.showAddNewAircraft
             }))
     }
+
     render(){
         const classes = useStyles;
         return(
             <div>
+                <Search />
                 <h3>Aircrafts</h3>
+  
                 <div>
                 <Fab size="small" color="secondary" aria-label="Add" className={classes.margin} onClick={this.toggle}>
                     <AddIcon />
@@ -56,7 +62,8 @@ class AllAircrafts extends React.Component{
                 {
                 this.state.showAddNewAircraft ?  <NewAircraftForm addAircraft={this.addAircraft}/> : null
                 }
-                </div>    
+                </div> 
+              
                 <hr />
                 
                 {this.props.aircrafts.map(aircraft=>(

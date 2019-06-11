@@ -30,13 +30,16 @@ class AllCountries extends React.Component{
         this.toggle=this.toggle.bind(this)
         this.addCountry=this.addCountry.bind(this)
     }
+    
     componentDidMount(){
         this.props.getAllCountries();
         this.props.getAllAircrafts();
     }
+
     deleteCountry(id){
         this.props.deleteCountry(id)
     }
+
     addCountry(newCountry){
         this.props.addCountry(newCountry)
     }
@@ -46,15 +49,12 @@ class AllCountries extends React.Component{
             this.setState((prevState)=>({
                 showAddNewCountry: !prevState.showAddNewCountry
             }))
-        
     }
+
     render(){
         let aircrafts=this.props.aircrafts
         let countries=this.props.countries
         
-        
-        console.log('this is for number of aircraft in single country----------->', aircrafts.filter(aircraft=>aircraft.countryId===countries[3].id).length)
-        console.log('this is for number of aircraft in single country----------->', countries)
         const classes = useStyles;
         return(
 

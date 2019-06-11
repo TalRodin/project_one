@@ -14,6 +14,18 @@ router.get('/', async (req, res, next) =>{
   {next(err)}
 });
 
+router.get('/search', async(req,res,next)=>{
+  try{
+    const type = req.query.type
+    console.log('typelekrmglremglkremgmrglgr', type);
+    
+    const types = await Aircrafts.getAircraftByType(type)
+      res.json(types)
+  }catch(err){
+    next(err)
+  }
+})
+
 router.get('/:id', async (req, res, next) =>{
     const id = req.params.id;
     try{

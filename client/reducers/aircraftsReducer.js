@@ -3,6 +3,7 @@ import axios from 'axios';
 const GOT_ALL_AIRCRAFTS='GOT_ALL_AIRCRAFTS'
 const ADD_AIRCRAFT='ADD_AIRCRAFT'
 const DELETE_AIRCRAFT= 'DELETE_AIRCRAFT'
+const FIND_TYPE = 'FIND_TYPE'
 
 const gotAllAircrafts=(aircrafts)=>({
     type: GOT_ALL_AIRCRAFTS,
@@ -19,15 +20,20 @@ const deleteAircraft = (aircraftId)=>({
     aircraftId
  })
 
+const findType=(aircraftTypes)=>({
+    type: FIND_TYPE,
+    aircraftTypes
+})
+ 
 export const getAllAircraftsThunk=()=>async (dispatch)=>{
+   
     const {data} =await axios.get('/api/aircrafts')
+    // console.log('---------->find by typeffffffffff',data)
     dispatch(gotAllAircrafts(data))
 }
 
-export const addAircraftThunk=(aircraft)=> async(dispatch)=>{
-    console.log('in the addAircraftThunk before=---====----====---===--->', aircraft)
-    const {data}=await axios.post('/api/aircrafts', aircraft)
-    console.log('in the addAircraftThunk after=---====----====---===--->', data)
+export const addAircraftThunk=(aircraftTypes)=> async(dispatch)=>{
+    const {data}=await axios.post('/api/aircrafts', aircraftTypes)
     dispatch(addAircraft(data))
 }
 
@@ -36,6 +42,12 @@ export const deleteAircraftThunk=(id)=> async (dispatch)=>{
     dispatch(deleteAircraft(id))
  }
 
+export const findTypeThunk=(type)=>async (dispatch)=>{
+    console.log('---------->find by type type',type)
+    const {data}=await axios.get(`/api/aircrafts/search?type=${type}`)
+    console.log('---------->found it', data)
+    dispatch(findType(data))
+}
 
 export const aircraftsReducer = (state=[], action)=>{
     switch(action.type){
@@ -44,9 +56,10 @@ export const aircraftsReducer = (state=[], action)=>{
         case DELETE_AIRCRAFT:
             return state.filter(aircraft=>aircraft.id!=action.aircraftId)
         case ADD_AIRCRAFT:
-            console.log('in the addAircraftThunk before state=---====----====---===--->', state)
-            console.log('in the addAircraftThunk after  action=---====----====---===--->', action)
             return [...state, action.aircraft]
+        case FIND_TYPE:
+            // console.log('--------------->', state)
+            return action.aircraftTypes;
         default:
             return state    
     }
