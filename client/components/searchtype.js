@@ -17,39 +17,38 @@ class Search extends Component {
       this.props.findType(this.state.query)
   }
    
-    handleInputChange = () => {
-        console.log(event.target.value)
-        console.log('CHANGING STATE');
-        
+    handleInputChange = () => {    
         this.setState({
           [event.target.name]: event.target.value
         })
       }
     handleSubmit(){
-      console.log('EXECUTING HANDLE SUBMIT' );
-      
         event.preventDefault() 
-        // let type={
-        //   query: this.state.query
-        // }
         const type = this.state.query;
-        console.log('WORKING SO FAR', type );
         this.props.findType(type)
-      }
-    // findType(aircraftTypes){
-    //     this.props.findType(aircraftTypes)
-    // }  
+      } 
     render() {
-      console.log('=========>>>>>>',this.state.query) //EMPTY
+
       return (
         <form>
-          <input
+          {/* <input
             placeholder="Search for..."
             type='search' name='query' value = {this.state.query}
             onChange={this.handleInputChange}
             className="searchBox"
-          />
-          {/* <button type='submit' onClick={()=>this.props.findType(this.state.query)}>Submit</button> */}
+          /> */}
+
+          <label htmlFor='type'>Type:
+                            <select type='search' name='query' placeholder="Search for..." value = {this.state.query} onChange={this.handleInputChange}>
+                             <option ></option>
+                             <option value="Attack">Attack</option>
+                             <option value="Bomber">Bomber</option>
+                             <option value="Versatile">Versatile</option>
+                             <option value="Transport">Transport</option>
+                             <option value="Reconoissance">Reconoissance</option>
+                             <option value="Rescue">Rescue</option>
+                             </select>
+                            </label>
           <button type='submit' onClick={this.handleSubmit}>Submit</button>
         </form>
       )
