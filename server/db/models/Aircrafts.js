@@ -23,7 +23,7 @@ const Aircrafts=db.define('aircrafts',{
             isAfter: "1902-12-31", 
         },
         get: function()  {
-              return this.getDataValue('year').toISOString().slice(0,10);
+              return this.getDataValue('year');
             }
       
     },
@@ -61,4 +61,3 @@ Aircrafts.getAircraftByType = function(AircraftType){
 
 // -----Table Aircrafts-----
 module.exports = Aircrafts;
-

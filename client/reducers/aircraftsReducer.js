@@ -26,9 +26,7 @@ const findType=(aircraftTypes)=>({
 })
  
 export const getAllAircraftsThunk=()=>async (dispatch)=>{
-   
     const {data} =await axios.get('/api/aircrafts')
-    // console.log('---------->find by typeffffffffff',data)
     dispatch(gotAllAircrafts(data))
 }
 
@@ -43,9 +41,7 @@ export const deleteAircraftThunk=(id)=> async (dispatch)=>{
  }
 
 export const findTypeThunk=(type)=>async (dispatch)=>{
-    console.log('---------->find by type type',type)
     const {data}=await axios.get(`/api/aircrafts/search?type=${type}`)
-    console.log('---------->found it', data)
     dispatch(findType(data))
 }
 
@@ -58,7 +54,6 @@ export const aircraftsReducer = (state=[], action)=>{
         case ADD_AIRCRAFT:
             return [...state, action.aircraft]
         case FIND_TYPE:
-            // console.log('--------------->', state)
             return action.aircraftTypes;
         default:
             return state    

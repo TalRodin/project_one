@@ -6,6 +6,7 @@ import {countryReducer} from  './countryReducer'
 import {aircraftReducer} from './aircraftReducer'
 import {aircraftsReducer} from './aircraftsReducer'
 
+
 // const initialState = {}
 // const rootReducer = function(state = initialState, action) {
 //   switch(action.type) {

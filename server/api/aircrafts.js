@@ -14,13 +14,11 @@ router.get('/', async (req, res, next) =>{
   {next(err)}
 });
 
-router.get('/search', async(req,res,next)=>{
-  try{
+router.get('/search', async(req, res, next)=>{
+  try{ 
     const type = req.query.type
-    console.log('typelekrmglremglkremgmrglgr', type);
-    
     const types = await Aircrafts.getAircraftByType(type)
-      res.json(types)
+    res.json(types)
   }catch(err){
     next(err)
   }
@@ -29,9 +27,9 @@ router.get('/search', async(req,res,next)=>{
 router.get('/:id', async (req, res, next) =>{
     const id = req.params.id;
     try{
-      const all_aircrafts = await Aircrafts.findById(id, {
+      const all_aircrafts = await Aircrafts.findByPk(id, {
           include: [
-              {model: Countries, required: false}
+              {model: Countries}
           ]
       });
       res.json(all_aircrafts)
@@ -42,7 +40,7 @@ router.get('/:id', async (req, res, next) =>{
 
 router.post('/', async(req,res,next)=>{
     try{
-       const make = req.body.make 
+       const make = req.body.make
        const model = req.body.model
        const year = req.body.year
        const type = req.body.type
@@ -51,7 +49,6 @@ router.post('/', async(req,res,next)=>{
        const description = req.body.description
        const countryId = req.body.countryId
        const aircrafts = await Aircrafts.create({make, model, year, type, cost, imageUrl, description, countryId})
-       console.log(aircrafts)
        res.json(aircrafts)
     }catch(err){next(err)}
   })
@@ -79,7 +76,7 @@ router.delete('/:id', async(req,res,next)=>{
   try{
     Aircrafts.destroy({
       where: {
-        id: id,
+        id: id
       }
     })
     res.sendStatus(204)

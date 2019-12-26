@@ -26,7 +26,6 @@ export const updateAircraftThunk=(aircraft, id)=>async (dispatch)=>{
 }
 
 export const aircraftReducer = (state = [], action) => {
-
           switch(action.type){
             case GOT_SINGLE_AIRCRAFT:
                 return action.aircraft

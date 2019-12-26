@@ -13,6 +13,10 @@ router.get('/', async (req, res, next) =>{
   {next(err)}
 });
 
+router.get('/', function(req,res,next){
+  res.json([])
+})
+
 router.get('/top5/', async(req,res,next)=>{
   try{
       const top_countries = await Countries.getTopFive()
@@ -24,13 +28,16 @@ router.get('/top5/', async(req,res,next)=>{
 router.get('/:id', async (req, res, next) => {
     const id = req.params.id;
     try {
-      const all_countries = await Countries.findById(id,    
+      const all_countries = await Countries.findByPk(id,    
         {
         include: [
-            {model: Aircrafts, required: false}
+            {model: Aircrafts}
         ]
-    }
-  );
+    })   
+    if(all_countries===null){
+    res.status(404).send()
+}
+      
       res.json(all_countries)
     } catch (err)
     {next(err)}
