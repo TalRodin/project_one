@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha jest -w test/*.spec.js --timeout 10000",
-    "start:dev": "webpack -w & nodemon main.js -e html,js,css --ignore public",
+    "start": "webpack -w & nodemon main.js -e html,js,css --ignore public",
     "seed": "node seed.js"
   },
   "keywords": [],
