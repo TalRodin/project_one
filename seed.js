@@ -12,50 +12,65 @@ await db.sync({force: true})
 
 
 const Country1 = await Countries.create({
-    name: 'Country1',
+    name: 'Lorem',
     GFI: 3.0,
-    flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Collection_of_military_aircraft.jpg/600px-Collection_of_military_aircraft.jpg'
+    flagUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/pastel-world-map-artur-szafranski.jpg'
   })
   const Country2 = await Countries.create({
-    name: 'Country2',
+    name: 'Ipsum',
     GFI: 6.0,
-    flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Collection_of_military_aircraft.jpg/600px-Collection_of_military_aircraft.jpg'
+    flagUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/pastel-world-map-artur-szafranski.jpg'
   })
   const Country3 = await Countries.create({
-    name: 'Country3',
+    name: 'Dolor',
     GFI: 4.0,
-    flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Collection_of_military_aircraft.jpg/600px-Collection_of_military_aircraft.jpg'
+    flagUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/pastel-world-map-artur-szafranski.jpg'
+  });
+  const Country4 = await Countries.create({
+    name: 'Sit',
+    GFI: 3.5,
+    flagUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/pastel-world-map-artur-szafranski.jpg'
+  })
+  const Country5 = await Countries.create({
+    name: 'Amet',
+    GFI: 6.5,
+    flagUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/pastel-world-map-artur-szafranski.jpg'
+  })
+  const Country6 = await Countries.create({
+    name: 'Consectetur',
+    GFI: 4.5,
+    flagUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/pastel-world-map-artur-szafranski.jpg'
   });
 
 
   const aircrafts = [{
-    make:  'Make1',
+    make:  'Lorem',
     model: 'A1',
     year: '1903-03-23',
     type: 'Attack',
     cost: 1.0,
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Collection_of_military_aircraft.jpg/600px-Collection_of_military_aircraft.jpg',
+    imageUrl: 'https://png.pngtree.com/png-clipart/20190115/ourlarge/pngtree-aircraft-paper-plane-cartoon-airplane-origami-png-image_336029.jpg',
     description: 'Aircrafts1',
     countryId: Country1.id
 
   },
   {
-    make:  'Make2',
+    make:  'Ipsum',
     model: 'A2',
     year: '1903-05-23',
     type: 'Bomber',
     cost: 2.0,
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Collection_of_military_aircraft.jpg/600px-Collection_of_military_aircraft.jpg',
+    imageUrl: 'https://png.pngtree.com/png-clipart/20190115/ourlarge/pngtree-aircraft-paper-plane-cartoon-airplane-origami-png-image_336029.jpg',
     description: 'Aircrafts2',
     countryId: Country2.id
   },
   {
-    make:  'Make3',
+    make:  'Amet',
     model: 'A3',
     year: '1903-09-23',
     type: 'Versatile',
     cost: 3.0,
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Collection_of_military_aircraft.jpg/600px-Collection_of_military_aircraft.jpg',
+    imageUrl: 'https://png.pngtree.com/png-clipart/20190115/ourlarge/pngtree-aircraft-paper-plane-cartoon-airplane-origami-png-image_336029.jpg',
     description: 'Aircrafts3',
     countryId: Country3.id
   }];

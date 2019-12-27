@@ -19,7 +19,8 @@ const Root = () => {
     <Router>
       <div>
         <Navbar />
-        Astronomical Airforces
+        {/* <div> Lorem Ipsum</div> */}
+       
         <Switch>
           <Route exact path="/countries/top5" component={TopFive} />
           <Route exact path="/" component={Home} />

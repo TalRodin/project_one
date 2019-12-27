@@ -36,19 +36,25 @@ class AllAircrafts extends Component{
         return (
             <div>
                 <Search />
-                <h3>Aircrafts</h3>
+                <h3 class="top_five_title">Aircrafts</h3>
                 <div>
                 <button type="button" onClick={this.toggle}>Add aircraft</button>
                 {
                 this.state.showAddNewAircraft ? <NewAircraftForm addAircraft={this.addAircraft} /> : null
                 }
                 </div>
-                <hr />
+             
                 {this.props.aircrafts.map(aircraft => (
                     <div key={aircraft.id}>
-                        <img src={aircraft.imageUrl} height={100} />
-                        <Link key={aircraft.id} to={`/aircrafts/${aircraft.id}`}>{aircraft.make}</Link>
-                        <button type = "button" onClick={() =>  this.deleteAircraft(aircraft.id)}>DELETE</button>
+                        
+                        <img class="img_" src={aircraft.imageUrl} height={100} />
+                        <div class="spacer2"></div>
+                        
+                        <div class='circle'></div>
+                        <Link key={aircraft.id} class="air__title" id="air_title" to={`/aircrafts/${aircraft.id}`}>{aircraft.make}</Link>
+                        {/* <div class="spacer3"></div> */}
+                        <button class='del'  type = "button" onClick={() =>  this.deleteAircraft(aircraft.id)}><i class="fa fa-trash"></i></button>
+                        
                     </div>
                 ))}
             </div>
